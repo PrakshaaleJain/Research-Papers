@@ -10,7 +10,6 @@ load_dotenv()
 
 # Retrieve the API key
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-# print(GOOGLE_API_KEY)
 if not GOOGLE_API_KEY:
     raise ValueError("API key is missing! Check your .env file.")
 
