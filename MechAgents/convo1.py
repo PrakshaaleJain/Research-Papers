@@ -54,9 +54,12 @@ chat_response = userproxy.initiate_chat(
     message = prompt,
 )
 
+# print("Chat Response Cost:", chat_response.cost)
 chat_id = chat_response.chat_id
 convs = chat_response.chat_history
-total_cost = chat_response.cost[1]
+# total_cost = chat_response.cost[1]
+total_cost = chat_response.cost["usage_including_cached_inference"]["gemini-1.5-pro"]["cost"]
+
 
 print(f"CHAT REF: {chat_id}")
 print(f"COST OF TRANSACTION: {total_cost}")
