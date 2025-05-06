@@ -1,4 +1,4 @@
-import autogen
+	import autogen
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
@@ -64,31 +64,31 @@ chat_response = userproxy.initiate_chat(assistant, message=initial_task)
 # print(chat_response.chat_history)
 
 
-# # # Extract the generated follow-up tasks
-# generated_tasks = []
-# for conv in chat_response.chat_history:
-#     if conv["role"] == "assistant":
-#         generated_tasks.append(conv["content"])
+ # # Extract the generated follow-up tasks
+ generated_tasks = []
+ for conv in chat_response.chat_history:
+     if conv["role"] == "assistant":
+         generated_tasks.append(conv["content"])
 
-# # Ensure we only take 4 tasks (if more are generated, we truncate)
-# generated_tasks = generated_tasks[:4]
+ # Ensure we only take 4 tasks (if more are generated, we truncate)
+ generated_tasks = generated_tasks[:4]
 
-# # Combine the initial task with generated tasks (ensuring 5 rounds)
-# all_tasks = [initial_task] + generated_tasks
+ # Combine the initial task with generated tasks (ensuring 5 rounds)
+ all_tasks = [initial_task] + generated_tasks
 
 # # Run the iterative conversation for exactly 5 rounds
-# for round_num, task in enumerate(all_tasks[:5], start=1):  # Ensuring exactly 5 rounds
-#     print(f"\n--- ROUND {round_num} ------------------------------------------------------------------------------------------")
-#     chat_response = userproxy.initiate_chat(assistant, message=task)
+ for round_num, task in enumerate(all_tasks[:5], start=1):  # Ensuring exactly 5 rounds
+     print(f"\n--- ROUND {round_num} ------------------------------------------------------------------------------------------")
+     chat_response = userproxy.initiate_chat(assistant, message=task)
     
 #     # Get chat history
 #     chat_id = chat_response.chat_id
 #     convs = chat_response.chat_history
 #     total_cost = chat_response.cost["usage_including_cached_inference"]["gemini-1.5-pro"]["cost"]
-
+#
 #     print(f"CHAT REF: {chat_id}")
 #     print(f"COST OF TRANSACTION: {total_cost}")
-
+#
 #     # Print conversation history
 #     for conv in convs:
 #         content = conv['content']
